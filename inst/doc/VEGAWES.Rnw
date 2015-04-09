@@ -183,12 +183,11 @@ correct.GCContent(average.coverage,GCContent,step)
 
 \begin{thebibliography}{}
 
+\bibitem{VEGAWES} Anjum S. {\it et~al}. (2015).VEGAWES: Variational segmentation on Whole Exome Sequencing, \textit{Submitted}.
 
 \bibitem{Morganella2010} Morganella S. {\it et~al}. (2010).VEGA: Variational segmentation for copy number detection, \textit{Bioinformatics}.
 
-\bibitem{VEGAWES} Anjum S. {\it et~al}. (2015).VEGAWES: Variational segmentation on Whole Exome Sequencing, \textit{Submitted}.
-
-\bibitem{Yoon2009} Yoon S. {\it et~al}. (2009).Sensitive and accurate detection of copy number variants using read depth of coverage.\textit {Genome research 19.9 1586-1592}.
+\bibitem{Yoon2009} Yoon S. {\it et~al}. (2009).Sensitive and accurate detection of copy number variants using read depth of coverage, \textit {Genome research 19.9 1586-1592}.
 
 
 \end{thebibliography}
