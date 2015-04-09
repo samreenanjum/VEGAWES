@@ -42,7 +42,7 @@ The package includes pre-computed GC Content values on the exon list and the ref
 Install VEGAWES on your computer by using the following command:
 
 \begin{verbatim}
-<Include the link>
+https://github.com/samreenanjum/VEGAWES
 \end{verbatim}
 
 In order to use this package, the following tools and data must be downloaded: 
