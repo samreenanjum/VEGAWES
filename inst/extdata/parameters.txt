@@ -1,0 +1,8 @@
+/export/cse/samreen/VEGAWES
+/export/cse/samreen/hg19/Homo_sapiens_assembly19.fasta
+/export/cse/NGSTools/GATK/GenomeAnalysisTK.jar
+/export/cse/samreen/VEGAWES/targets.interval_list
+02-0003
+/export/cse/NGSDATA/TCGA/GBM/EXOME/TCGA-06-0125/6f138046-a805-489a-a335-6686173d6505/C484.TCGA-06-0125-10A-01D-1490-08.6.bam
+/export/cse/NGSDATA/TCGA/GBM/EXOME/TCGA-06-0125/ced14238-6593-4648-b3bb-ca7711f71346/C484.TCGA-06-0125-01A-01D-1490-08.6.bam
+/export/cse/samreen/VEGAWES/GCC

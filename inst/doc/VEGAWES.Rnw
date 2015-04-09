@@ -1,0 +1,194 @@
+%\VignetteIndexEntry{VEGAWES}
+%\VignetteDepends{}
+%\VignettePackage{VEGAWES}
+
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{graphicx}
+
+\usepackage[colorlinks=true]{hyperref}
+\hypersetup{
+  bookmarksnumbered=true,
+  linkcolor=black,
+  citecolor=black,
+  pagecolor=black,
+  urlcolor=black,
+}
+
+%opening
+\title{VEGAWES: Variational Segmentation on Whole Exome Sequencing}
+
+\author{Samreen Anjum \and Michele Ceccarelli}
+
+\date{}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\maketitle
+
+\tableofcontents
+
+\section{Overview}
+
+
+This document describes classes and functions of the VEGAWES (Variational Estimator of Genomic Aberrations on Whole Exome Sequencing data) package. The package consists of a pipeline to process Whole Exome Sequencing data BAM files and compute copy number segmentation based on the variational model, inspired from VEGA \cite{Morganella2010}. The algorithm implemented in this package is described in \lq\lq VEGAWES: Variational segmentation on Whole Exome Sequencing \rq\rq~\cite{VEGAWES}. 
+
+In this package, we read in paired tumor BAM files as input, and compute average read counts for both normal and tumor BAM files using GATK (Genome Analysis ToolKit). Then, the average read counts are normalized and preprocessed to remove GC bias. The log ratio (LRR) values of the read counts is calculated by taking the ratio of the tumor average read counts and the normal average read counts and passed on as input to perform VEGAWES segmentation. 
+
+The package includes pre-computed GC Content values on the exon list and the reference genome, both mentioned in the Installation section.
+
+
+\section{Installation}
+Install VEGAWES on your computer by using the following command:
+
+\begin{verbatim}
+<Include the link>
+\end{verbatim}
+
+In order to use this package, the following tools and data must be downloaded: 
+\begin{itemize}
+\item The reference gonome used in the development of this package can be found at \begin{verbatim}ftp://ftp.ncbi.nlm.nih.gov/sra/reports/Assembly/
+GRCh37-HG19_Broad_variant/Homo_sapiens_assembly19.fasta \end{verbatim} 
+\item GATK jar file
+\item Normal and Tumor BAM files
+\end{itemize}
+
+
+\section{Run VEGAWES}
+\label{run_VEGAWES}
+In order to use this package, all the items mentioned in the installation must be downloaded Java must be in the current path. The package consists of a \lq\lq parameters.txt \rq\rq file that should be modified by the user before running the package. 
+
+The parameters.txt file has requires the following information:
+\begin{itemize}
+  \item Path to the working directory
+  \item Reference genome file path
+  \item Path to the GATK jar
+  \item List of exons to run GATK (The file \lq targets.interval\_list\rq~ is included in the package in the format: chr, probe\_start, probe\_end)
+  \item Name of the sample (to create an output folder to save GATK results and the segmentation results, for example: \lq 06-0125\rq)
+  \item Normal input BAM file path
+  \item Tumor input BAM file path
+  \item Path to GC Content Data folder
+\end{itemize}
+
+In order to run the pipeline, the user needs to use the {\ttfamily runVEGAWES}. This function requires two arguments: the input file (\lq\lq parameters.txt \rq\rq) and the list of chromosomes that need to be analyzed (see Appendix \ref{appendix:MainFunction} for more details). It also checks for the presence of the GATK results in the sample folder, and runs GATK if the files are absent. In order to compute segmentation on all chromosomes of the input files:  
+
+
+
+\begin{Scode}
+> runVEGAWES("parameters.txt", chr.list = c(1:22))
+\end{Scode}
+
+The {\ttfamily chr.list} argument can be modified to analyze specific chromosomes. For example, if the user would like to run VEGAWES algorithm on the chromosomes 1 and 7, then the following command can be used:  
+
+
+\begin{Scode}
+> runVEGAWES("parameters.txt", chr.list = c(1,8))
+\end{Scode}
+
+The computed segmentation is saved in a tab delimited file in the output folder and called \lq chr<chromosome>.txt\rq~ (example, \lq chr1.txt \rq). For more detail about this file, please refer to the next subsection (\ref{out_file_format}). Other two parameters can be chosen by the user: {\ttfamily alpha} and {\ttfamily beta} for more details on these parameters see Appendix \ref{appendix:MainFunction}.
+
+\subsection{Output File Format}
+\label{out_file_format}
+The segmentation results are stored in a file in the output folder. This file has a row for each segmented region and for each of them it has seven features (columns of the file):
+
+\begin{description}
+ \item[\textbf{Chromosome}:] the chromosome containing the region
+ \item[\textbf{bp Start}:] the genomic start position (in bp) of the region
+ \item[\textbf{bp End}:] the genomic end position (in bp) of the region
+ \item[\textbf{Num of Markers}:] the number of markers contained in the region
+ \item[\textbf{Mean}:] the mean value of the LRR of all probes contained in the region
+ \item[\textbf{Label}:] indicates the computed copy number label of the region: loss (1), normal (2) and gain (3).
+\end{description}
+
+
+
+\appendix
+\section{VEGAWES: Function Description}
+\label{appendix:MainFunction}
+\subsection{{\ttfamily runVEGAWES}}
+The function {\ttfamily runVEGAWES} processes and computes the segmentation on tumor BAM files. The function first initializes the parameters and paths using the input file and then runs GATK to compute the average read coverage. It then processes each chromosome to remove the GC bias content and then performs the VEGAWES segmentations. The header of {\ttfamily runVEGAWES} is as follows:
+
+
+\begin{verbatim}
+runVEGAWES(inputfile, chr.list, alpha=0.001, beta=0.5)
+\end{verbatim}
+
+
+\begin{description}
+ \item[{\ttfamily inputfile}:] This argument is the \lq parameters.txt\rq file the contains the required filepaths and samplename. For more details see Section (\ref{run_VEGAWES}) .
+
+ \item[{\ttfamily chr.list}:] This argument is used to list the chromosomes that have to be processed. By using {\ttfamily c(1:22)} all chromosomes will be segmented.
+ 
+ \item[{\ttfamily alpha}:] (default value $0.001$)  This argument is used to define the weight given to the distance between the exons factor. Setting this to 0 will allow the usage of the original VEGA segmenation (see \cite{VEGAWES} for more details).
+ 
+ \item[{\ttfamily beta}:] (default value $0.5$)  This argument is used to define the stop condition of VEGAWES algorithm (see \cite{VEGAWES} for more details).
+  
+\end{description}
+
+
+
+\subsection{{\ttfamily initializeParams}}
+
+This function reads in the parameters file, creates an output folder named after the sample name and returns an object {\ttfamily params} that contains all the required paths and parameters as described in Section (\ref{run_VEGAWES})
+
+\begin{verbatim}
+initializeParams(inputfile)
+\end{verbatim}
+
+\begin{description}
+  \item[{\ttfamily inputfile}:] This argument is the "parameters.txt" file the contains the required filepaths and samplename. For more details see Section (\ref{run_VEGAWES}).
+\end{description}
+
+\subsection{{\ttfamily runGATK}}
+This function runs the GATK command with the DepthOfCoverage utility to compute the average read coverage of the normal and tumor BAM files and saves it in the output folder named after the sample name. For more details see Section (\ref{run_VEGAWES}).
+\begin{verbatim}
+runGATK(params)
+\end{verbatim}
+
+\begin{description}
+  \item[{\ttfamily params}:] This argument is the output object from {\ttfamily initializeParams} containing the path to the GATK jar, the exon list, the reference genome, the sample name as well the input BAM files. 
+\end{description}
+
+\subsection{{\ttfamily read.from.gatk}}
+This function reads in the GATK file and creates an object containing the required information.
+\begin{verbatim}
+run.from.gatk(gatk.file)
+\end{verbatim}
+\begin{description}
+ \item[{\ttfamily gatk.file}:] This argument is the GATK output file saved in the output folder
+\end{description}
+
+\subsection{{\ttfamily calculateCN}}
+This function computes the copy number value for the given {\ttfamily logR} values.
+\begin{verbatim}
+calculateCN(logR)
+\end{verbatim}
+\begin{description}
+ \item[{\ttfamily logR}:] This argument is vector containing all the logR values computed by the segmentation algorithm
+\end{description}
+
+\subsection{{\ttfamily correct.GCContent}}
+This function adjusts the average read coverage values based on the GC Content. The approach is based on the median normalization approach described in \cite{Yoon2009}.
+\begin{verbatim}
+correct.GCContent(average.coverage,GCContent,step)
+\end{verbatim}
+
+\begin{description}
+\item[{\ttfamily average.coverage}:] This argument is the original average read coverage values
+\item[{\ttfamily GCContent}:] This argument is the percentage of GCContent in an exon
+\item[{\ttfamily step}:] The argument is the interval of GC percentage values chosen to compute the median to adjust each exon
+\end{description}
+
+
+\begin{thebibliography}{}
+
+
+\bibitem{Morganella2010} Morganella S. {\it et~al}. (2010).VEGA: Variational segmentation for copy number detection, \textit{Bioinformatics}.
+
+\bibitem{VEGAWES} Anjum S. {\it et~al}. (2015).VEGAWES: Variational segmentation on Whole Exome Sequencing, \textit{Submitted}.
+
+\bibitem{Yoon2009} Yoon S. {\it et~al}. (2009).Sensitive and accurate detection of copy number variants using read depth of coverage.\textit {Genome research 19.9 1586-1592}.
+
+
+\end{thebibliography}
+\end{document}
