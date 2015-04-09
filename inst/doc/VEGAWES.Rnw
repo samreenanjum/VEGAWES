@@ -45,6 +45,7 @@ Install VEGAWES on your computer by using the following command:
 https://github.com/samreenanjum/VEGAWES
 \end{verbatim}
 
+
 In order to use this package, the following tools and data must be downloaded: 
 \begin{itemize}
 \item The reference gonome used in the development of this package can be found at \begin{verbatim}ftp://ftp.ncbi.nlm.nih.gov/sra/reports/Assembly/
