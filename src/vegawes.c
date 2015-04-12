@@ -364,15 +364,6 @@ void vegawes(double *data, int *markers_start, int *markers_end, double *positio
 	node max, *maxptr, tmp_node;
 	breakpoint brks[num_of_probes+1];
   
-  //ADDED:
-  double mean_distances[num_of_probes];
-  //positions of each exon = midpoint of the exon
-  //double positions[num_of_probes];
-  //for (i = 0; i <num_of_probes;i++ ){
-    //positions[i] = (markers_start[i] + markers_end[i])/2;
-  //}
-  // End of add
-  
 	/* compute the stop condition */
 	stop_lambda_gradient = (*std)*beta;
 
