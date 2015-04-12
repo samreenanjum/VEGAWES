@@ -59,9 +59,7 @@ GRCh37-HG19_Broad_variant/Homo_sapiens_assembly19.fasta \end{verbatim}
 \label{run_VEGAWES}
 In order to use this package, all the items mentioned in the installation must be downloaded and Java is assumed to be in the current path. The exon list used in this setup has been downloaded from UCSC Genome Bioinformatics table for human genome reference hg19 and is included in the package. 
 
-The first step in the pipleline is to run GATK which takes about 30-40 minutes per file and saves the average read coverage results in the sample output folder. This needs to be run once per BAM file, therefore, {\ttfamily runVEGAWES} also checks for the presence of the GATK results in the sample output folder, and runs GATK only if the files are absent. The second step in the pipeline is to remove GC content bias from the original average read coverage values. The GC content for the exon list using the reference genome has been pre-computed and included in the \lq data\rq~ folder. 
-
-The package consists of a \lq\lq parameters.txt \rq\rq file that should be modified by the user before running the package. The parameters.txt file requires the following information:
+In order to run the pipeline, the user needs to execute the {\ttfamily runVEGAWES}. This function requires two arguments: the input file (\lq\lq parameters.txt \rq\rq) and the list of chromosomes that need to be analyzed (see Appendix \ref{appendix:MainFunction} for more details). The package consists of a \lq\lq parameters.txt \rq\rq file that should be modified by the user before running the package. The parameters.txt file requires the following information:
 \begin{itemize}
   \item Path to the working directory
   \item Reference genome file path
@@ -73,7 +71,7 @@ The package consists of a \lq\lq parameters.txt \rq\rq file that should be modif
   \item Path to GC Content Data folder
 \end{itemize}
 
-In order to run the pipeline, the user needs to execute the {\ttfamily runVEGAWES}. This function requires two arguments: the input file (\lq\lq parameters.txt \rq\rq) and the list of chromosomes that need to be analyzed (see Appendix \ref{appendix:MainFunction} for more details). In order to compute segmentation on all chromosomes of the input files:  
+The first step in the pipleline is to run GATK which takes about 30-40 minutes per file and saves the average read coverage results in the sample output folder. This needs to be run once per BAM file, therefore, {\ttfamily runVEGAWES} also checks for the presence of the GATK results in the sample output folder, and runs GATK only if the files are absent. The second step in the pipeline is to remove GC content bias from the original average read coverage values. The GC content for the exon list using the reference genome has been pre-computed and included in the \lq data\rq~ folder. In order to compute segmentation on all chromosomes of the input files:  
 
 \begin{Scode}
 > runVEGAWES("parameters.txt", chr.list = c(1:22))
