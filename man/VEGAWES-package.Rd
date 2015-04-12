@@ -14,13 +14,16 @@ License: \tab GPL-2\cr
 }
 }
 
-\references{ Morganella S. et al. (2010). VEGA: Variational segmentation for copy number detection, Bioinformatics.}
+\references{ 
+Anjum, S., Ceccarelli, M. (2015). VEGAWES: Variational segmentation on Whole Exome Sequencing, Submitted. \cr
+Morganella, S., Cerulo, L., Viglietto, G., & Ceccarelli, M. (2010). VEGA: Variational segmentation for copy number detection. Bioinformatics, 26(24), 3020-3027.
+}
 \author{Samreen Anjum, Michele Ceccarelli\cr
 Maintainer: Samreen Anjum <samreen.anjum@gmail.com>}
 
 \examples{
 \dontrun{
-# Run VEGAWES segmentation on all chromosomes of the WES data and save the results in a .txt tab delimited file
-vegawes(CNVData, chromosomes=c(1:22), alpha = 0.001, beta=0.5);
+# Start VEGAWES segmentation on chromosomes 8 of the data with alpha = 0.001, beta = 0.7 and save the results in chr8.txt
+runVEGAWES(inputfile, chr.list=c(8), alpha = 0.001, beta=0.7);
 }
 }
