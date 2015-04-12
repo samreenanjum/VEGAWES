@@ -23,7 +23,7 @@ Maintainer: Samreen Anjum <samreen.anjum@gmail.com>}
 
 \examples{
 \dontrun{
-# Start VEGAWES segmentation on chromosomes 8 of the data with alpha = 0.001, beta = 0.7 and save the results in chr8.txt
+# Start VEGAWES segmentation on chromosomes 8 of the data with alpha = 0.001, beta = 0.7 and save the results in Segmentation.8.txt
 runVEGAWES(inputfile, chr.list=c(8), alpha = 0.001, beta=0.7);
 }
 }

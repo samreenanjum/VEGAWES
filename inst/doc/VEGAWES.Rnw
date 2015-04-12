@@ -84,7 +84,7 @@ The {\ttfamily chr.list} argument can be modified to analyze specific chromosome
 > runVEGAWES("parameters.txt", chr.list = c(1,8))
 \end{Scode}
 
-The computed segmentation is saved in a tab delimited file in the output folder and called \lq chr<chromosome>.txt\rq~ (example, \lq chr1.txt \rq). For more detail about this file, please refer to the next subsection (\ref{out_file_format}). Other two parameters can be chosen by the user: {\ttfamily alpha} and {\ttfamily beta} for more details on these parameters see Appendix \ref{appendix:MainFunction}.
+The computed segmentation is saved in a tab delimited file in the output folder and called \lq Segmentation.<chromosome>.txt\rq~ (example, \lq Segmentation.1.txt \rq). For more detail about this file, please refer to the next subsection (\ref{out_file_format}). Other two parameters can be chosen by the user: {\ttfamily alpha} and {\ttfamily beta} for more details on these parameters see Appendix \ref{appendix:MainFunction}.
 
 \subsection{Output File Format}
 \label{out_file_format}

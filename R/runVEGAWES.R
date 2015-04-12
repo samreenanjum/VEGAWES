@@ -76,7 +76,7 @@ runVEGAWES <- function(inputfile, chr.list = c(1:22), alpha = 0.001, beta = 0.7)
     cnv$copy.number = calculateCN(as.numeric(as.character(cnv$logR)))
     
     ######  Write it to file  ########
-    write.table(cnv, file=paste(params$working.folder, "//", params$sample.name, "//", chr,".txt",sep=""), quote=FALSE, sep="\t", row.names=FALSE, )
+    write.table(cnv, file=paste(params$working.folder, "//", params$sample.name, "//Segmentation.", chr,".txt",sep=""), quote=FALSE, sep="\t", row.names=FALSE, )
   }  
 }
 
