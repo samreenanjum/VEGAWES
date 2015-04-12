@@ -46,7 +46,7 @@ https://github.com/samreenanjum/VEGAWES
 \end{verbatim}
 
 
-In order to use this package, the following tools and data must be downloaded: 
+In addition, the following tools and data must be downloaded: 
 \begin{itemize}
 \item The reference gonome used in the development of this package can be found at \begin{verbatim}ftp://ftp.ncbi.nlm.nih.gov/sra/reports/Assembly/
 GRCh37-HG19_Broad_variant/Homo_sapiens_assembly19.fasta \end{verbatim} 
@@ -57,7 +57,7 @@ GRCh37-HG19_Broad_variant/Homo_sapiens_assembly19.fasta \end{verbatim}
 
 \section{Run VEGAWES}
 \label{run_VEGAWES}
-In order to use this package, all the items mentioned in the installation must be downloaded Java must be in the current path. The package consists of a \lq\lq parameters.txt \rq\rq file that should be modified by the user before running the package. 
+In order to use this package, all the items mentioned in the installation must be downloaded and Java must be in the current path. The package consists of a \lq\lq parameters.txt \rq\rq file that should be modified by the user before running the package. 
 
 The parameters.txt file has requires the following information:
 \begin{itemize}
