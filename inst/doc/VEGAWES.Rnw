@@ -59,7 +59,7 @@ GRCh37-HG19_Broad_variant/Homo_sapiens_assembly19.fasta \end{verbatim}
 \label{run_VEGAWES}
 In order to use this package, all the items mentioned in the installation must be downloaded and Java is assumed to be in the current path. The exon list used in this setup has been downloaded from UCSC Genome Bioinformatics table for human genome reference hg19 and is included in the package. 
 
-In order to run the pipeline, the user needs to execute the {\ttfamily runVEGAWES}. This function requires two arguments: the input file (\lq\lq parameters.txt \rq\rq) and the list of chromosomes that need to be analyzed (see Appendix \ref{appendix:MainFunction} for more details). The package consists of a \lq\lq parameters.txt \rq\rq file that should be modified by the user before running the package. The parameters.txt file requires the following information:
+In order to run the pipeline, the user needs to execute the {\ttfamily runVEGAWES}. This function requires two arguments: the input file (\lq\lq parameters.txt \rq\rq) and the list of chromosomes that need to be analyzed (see Appendix \ref{appendix:MainFunction} for more details). The package consists of a \lq\lq parameters.txt\rq\rq~file that should be modified by the user before running the package. The parameters.txt file requires the following information:
 \begin{itemize}
   \item Path to the working directory
   \item Reference genome file path

@@ -3,7 +3,7 @@
 \alias{VEGAWES}
 \docType{package}
 \title{An R package for copy number data segmentation on WES data}
-\description{VEGAWES (Variational Estimator for Genomic Aberrations on Whole Exome Sequencing data) is an algorithm that adapts a very popular variational model (Mumford and Shah) and used in image segmentation so that chromosomal aberrant regions can be efficiently detected.
+\description{VEGAWES (Variational Estimator for Genomic Aberrations on Whole Exome Sequencing data) is an algorithm that adapts a very popular variational model (Mumford and Shah) so that chromosomal aberrant regions can be efficiently detected on Whole Exome Sequencing data.
 }
 \details{
 \tabular{ll}{
