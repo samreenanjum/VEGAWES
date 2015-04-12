@@ -1,4 +1,4 @@
-source("/export/cse/samreen/VEGAWES/vegawes.functions.R")
+source("vegawes.functions.R")
 
 #################################################################################
 ##                                                                             ##
