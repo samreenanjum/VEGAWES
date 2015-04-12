@@ -2,8 +2,8 @@ source("R/vegawes.functions.R")
 
 #################################################################################
 ##                                                                             ##
-## Runs the VEGAWES segmentation on WES data                                    ##
-## Assumptions: Java exists in the current path                                ##
+## Runs the VEGAWES segmentation on WES data                                   ##
+## Assumptions: Java exists in the current path to run GATK                    ##
 ##                                                                             ##
 ## Input:  inputfile - File containing all required parameters                 ##
 ##         chr.list  - Chromosomes on which segmentation is performed          ##
