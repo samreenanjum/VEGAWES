@@ -57,7 +57,9 @@ GRCh37-HG19_Broad_variant/Homo_sapiens_assembly19.fasta \end{verbatim}
 
 \section{Run VEGAWES}
 \label{run_VEGAWES}
-In order to use this package, all the items mentioned in the installation must be downloaded and Java is assumed to be in the current path. The exon list used in this setup has been downloaded from UCSC Genome Bioinformatics table for human genome reference hg19 and is included in the package. The first step in the pipleline is to run GATK which takes about 30-40 minutes per file and saves the average read coverage results in the sample output folder. This needs to be run once per BAM file, therefore, {\ttfamily runVEGAWES} also checks for the presence of the GATK results in the sample output folder, and runs GATK only if the files are absent. The second step in the pipeline is to remove GC content bias from the original average read coverage values. The GC content for the exon list using the reference genome has been pre-computed and included in the \lq data \rq~ folder. 
+In order to use this package, all the items mentioned in the installation must be downloaded and Java is assumed to be in the current path. The exon list used in this setup has been downloaded from UCSC Genome Bioinformatics table for human genome reference hg19 and is included in the package. 
+
+The first step in the pipleline is to run GATK which takes about 30-40 minutes per file and saves the average read coverage results in the sample output folder. This needs to be run once per BAM file, therefore, {\ttfamily runVEGAWES} also checks for the presence of the GATK results in the sample output folder, and runs GATK only if the files are absent. The second step in the pipeline is to remove GC content bias from the original average read coverage values. The GC content for the exon list using the reference genome has been pre-computed and included in the \lq data\rq~ folder. 
 
 The package consists of a \lq\lq parameters.txt \rq\rq file that should be modified by the user before running the package. The parameters.txt file requires the following information:
 \begin{itemize}
