@@ -1,6 +1,6 @@
 # VEGAWES package
 
-This is an R package that implements VEGAWES algorithm for copy number segmentation on Whole Exome Sequencing data. 
+This is an R package that implements VEGAWES, a variational model based segmentation algorithm, for copy number segmentation on Whole Exome Sequencing data. 
 The package and the source code can be downloaded from https://github.com/samreenanjum/VEGAWES. 
 
 ##### To install the package on R:
@@ -11,7 +11,7 @@ install.packages("https://github.com/samreenanjum/VEGAWES/VEGAWES_1.0.tar.gz")
 
 library(VEGAWES)
 
-##### The input files required for running this algorithm are: 
+##### Input files required for running this pipeline: 
 
 * Paired Tumor-Normal BAM files
 
