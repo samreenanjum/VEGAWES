@@ -1,7 +1,7 @@
 # VEGAWES package
 
 This is an R package that implements VEGAWES, a segmentation algorithm based on Mumford and Shah variational model, for copy number segmentation on Whole Exome Sequencing data. 
-The package and the source code can be downloaded from [here](https://github.com/samreenanjum/VEGAWES). 
+The package and the source code can be downloaded [here](https://github.com/samreenanjum/VEGAWES). 
 
 ##### To install the package on R:
 
@@ -14,18 +14,18 @@ The package and the source code can be downloaded from [here](https://github.com
 
 ##### Dependencies:
 * Hg19 Reference Genome: (ftp://ftp.ncbi.nlm.nih.gov/sra/reports/Assembly/GRCh37-HG19_Broad_variant/Homo_sapiens_assembly19.fasta)
-* GATK jar
+* Genome Analysis Tool Kit (GATK) jar
 
 
-##### Input files required for running this pipeline: 
+##### Input files required: 
 
 * Paired Tumor-Normal BAM files
 * Exome Interval List (Included in the package as "targets.interval\_list" under /inst/extdata)
 * GC Content Data (Included in the package under /data)
 
-In addition, "parameters.txt" must be modified to include all the required paths. See VEGAWES.pdf under /inst/doc for further details.
+In addition, "parameters.txt" must be modified to include all the required paths. See Examples below and VEGAWES.pdf under /inst/doc for further details.
 
-The file parameters.txt" contains the following information:
+The file "parameters.txt" contains the following information:
 
     * Path to the working directory
     * Reference genome file path
