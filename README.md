@@ -38,14 +38,14 @@ The file "parameters.txt" contains the following information:
 
 Example of "parameters.txt":
 
-    /home/samreen/VEGAWES
-    /home/samreen/VEGAWES/Homo\_sapiens\_assembly19.fasta
-    /home/samreen/tools/GATK/GenomeAnalysisTK.jar
-    /home/samreen/VEGAWES/inst/extdata/targets.interval_list
+    /home/VEGAWES
+    /home/VEGAWES/Homo\_sapiens\_assembly19.fasta
+    /home/tools/GATK/GenomeAnalysisTK.jar
+    /home/VEGAWES/inst/extdata/targets.interval_list
     06-0125
-    /home/samreen/data/TCGA/GBM/TCGA-06-0125/6f138046-a805-489a-a335-6686173d6505/C484.TCGA-06-0125-10A-01D-1490-08.6.bam
-    /home/samreen/data/TCGA/GBM/TCGA-06-0125/ced14238-6593-4648-b3bb-ca7711f71346/C484.TCGA-06-0125-01A-01D-1490-08.6.bam
-    /home/samreen/VEGAWES/data/GCC
+    /home/data/TCGA/GBM/TCGA-06-0125/6f138046-a805-489a-a335-6686173d6505/C484.TCGA-06-0125-10A-01D-1490-08.6.bam
+    /home/data/TCGA/GBM/TCGA-06-0125/ced14238-6593-4648-b3bb-ca7711f71346/C484.TCGA-06-0125-01A-01D-1490-08.6.bam
+    /home/VEGAWES/data/GCC
 
 
 

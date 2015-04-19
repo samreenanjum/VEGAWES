@@ -75,14 +75,14 @@ The parameters.txt file requires the following information:
 \end{itemize}
 
 Example of \lq parameters.txt\rq:\\
-  /home/samreen/VEGAWES\\
-  /home/samreen/VEGAWES/Homo\_sapiens\_assembly19.fasta\\
-  /home/samreen/tools/GATK/GenomeAnalysisTK.jar\\
-  /home/samreen/VEGAWES/inst/extdata/targets.interval\_list\\
+  /home/VEGAWES\\
+  /home/VEGAWES/Homo\_sapiens\_assembly19.fasta\\
+  /home/tools/GATK/GenomeAnalysisTK.jar\\
+  /home/VEGAWES/inst/extdata/targets.interval\_list\\
   06-0125\\
-  /home/samreen/data/TCGA/GBM/TCGA-06-0125/6f138046-a805-489a-a335-6686173d6505/C484.TCGA-06-0125-10A-01D-1490-08.6.bam\\
-  /home/samreen/data/TCGA/GBM/TCGA-06-0125/ced14238-6593-4648-b3bb-ca7711f71346/C484.TCGA-06-0125-01A-01D-1490-08.6.bam\\
-  /home/samreen/VEGAWES/data/GCC\\
+  /home/data/TCGA/GBM/TCGA-06-0125/6f138046-a805-489a-a335-6686173d6505/C484.TCGA-06-0125-10A-01D-1490-08.6.bam\\
+  /home/data/TCGA/GBM/TCGA-06-0125/ced14238-6593-4648-b3bb-ca7711f71346/C484.TCGA-06-0125-01A-01D-1490-08.6.bam\\
+  /home/VEGAWES/data/GCC\\
 
 
 The first step in the pipleline is to run GATK which takes about 30-40 minutes per file and saves the average read coverage results in the sample output folder. This needs to be run once per BAM file, therefore, {\ttfamily runVEGAWES} also checks for the presence of the GATK results in the sample output folder, and runs GATK only if the files are absent. The second step in the pipeline is to remove GC content bias from the original average read coverage values. The GC content for the exon list using the reference genome has been pre-computed and included in the \lq data\rq~ folder. In order to compute segmentation on all chromosomes of the input files:  
