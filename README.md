@@ -24,7 +24,11 @@ In addition, "parameters.txt" must be modified to include all the required paths
 
 ##### Run the pipeline
 
-To run the pipeline, the user needs to run the runVEGAWES function giving atleast two parameters - "parameters.txt" and the list of chromosomes to be analyzed. This function first runs GATK to compute average read counts from the BAM files, normalizes the counts based on GC Content, computes log-ratio values for each exome, and finally runs VEGAWES segmentation on the required chromosomes. The average read counts and other output files are stored in a new output directory named after the sample-name. The function can be called in the following way:
+To run the pipeline, the user needs to run the runVEGAWES function giving atleast two parameters - "parameters.txt" and the list of chromosomes to be analyzed. 
+
+This function first runs GATK to compute average read counts from the BAM files, normalizes the counts based on GC Content, computes log-ratio values for each exome, and finally runs VEGAWES segmentation on the required chromosomes. The average read counts and other output files are stored in a new output directory named after the sample-name. 
+
+The function can be called in the following way:
 
     runVEGAWES( "parameters.txt", chr.list = c(1:22) )
 
