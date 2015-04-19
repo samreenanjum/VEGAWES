@@ -15,7 +15,7 @@ The package and the source code can be downloaded from [here](https://github.com
 ##### Input files required for running this pipeline: 
 
 * Paired Tumor-Normal BAM files
-* [Hg19 Reference Genome](ftp://ftp.ncbi.nlm.nih.gov/sra/reports/Assembly/GRCh37-HG19_Broad_variant/Homo_sapiens_assembly19.fasta)
+* Hg19 Reference Genome: (ftp://ftp.ncbi.nlm.nih.gov/sra/reports/Assembly/GRCh37-HG19_Broad_variant/Homo_sapiens_assembly19.fasta)
 * GATK jar
 * Exome Interval List (Included in the package)
 * GC Content Data (Included in the package)
