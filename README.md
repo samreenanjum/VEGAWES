@@ -20,8 +20,8 @@ The package and the source code can be downloaded [here](https://github.com/samr
 ##### Input files required: 
 
 * Paired Tumor-Normal BAM files
-* Exome Interval List (Included in the package as "targets.interval\_list" under /inst/extdata)
-* GC Content Data (Included in the package under /data)
+* Exome Interval List (Included in the package under /inst/extdata as "targets.interval\_list" )
+* GC Content Data (Included in the package under /data as "GCContent.\<chromosome\>.RData" )
 
 In addition, "parameters.txt" must be modified to include all the required paths. See Examples below and VEGAWES.pdf under /inst/doc for further details.
 
