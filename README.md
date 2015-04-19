@@ -14,10 +14,10 @@ library(VEGAWES)
 ##### Input files required for running this pipeline: 
 
 * Paired Tumor-Normal BAM files
-
 * Reference Genome: ftp://ftp.ncbi.nlm.nih.gov/sra/reports/Assembly/GRCh37-HG19_Broad_variant/Homo_sapiens_assembly19.fasta
-
 * GATK jar
+* Exome Interval List (Included in the package)
+* GC Content Data (Included in the package)
 
 In addition, the file included in the package - "parameters.txt" must be modified to include all the required paths. 
 
