@@ -13,11 +13,11 @@ library(VEGAWES)
 
 ##### The input files required for running this algorithm are: 
 
-1. Paired Tumor-Normal BAM files
+* Paired Tumor-Normal BAM files
 
-2. Reference Genome: ftp://ftp.ncbi.nlm.nih.gov/sra/reports/Assembly/GRCh37-HG19_Broad_variant/Homo_sapiens_assembly19.fasta
+* Reference Genome: ftp://ftp.ncbi.nlm.nih.gov/sra/reports/Assembly/GRCh37-HG19_Broad_variant/Homo_sapiens_assembly19.fasta
 
-3. GATK jar
+* GATK jar
 
 In addition, the file included in the package - "parameters.txt" must be modified to include all the required paths. 
 
