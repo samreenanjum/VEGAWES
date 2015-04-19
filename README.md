@@ -19,7 +19,7 @@ library(VEGAWES)
 * Exome Interval List (Included in the package)
 * GC Content Data (Included in the package)
 
-In addition, the file included in the package - "parameters.txt" must be modified to include all the required paths. 
+In addition, "parameters.txt" must be modified to include all the required paths. See VEGAWES.pdf under /inst/doc for further details.
 
 ##### Run the pipeline
 
