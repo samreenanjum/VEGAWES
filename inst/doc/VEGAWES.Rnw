@@ -67,14 +67,14 @@ The parameters.txt file requires the following information:
   \item Path to the working directory
   \item Reference genome file path
   \item Path to the GATK jar
-  \item File containing list of exons to run GATK (The file \lq targets.interval\_list\rq~ is included in the package in the format: chr:probe\_start-probe\_end)
+  \item File containing list of exons to run GATK (format: chr:probe\_start-probe\_end; The file \lq targets.interval\_list\rq~ is included in the package under /inst/extdata)
   \item Name of the sample (to create an output folder to save GATK results and the segmentation results, for example: \lq 06-0125\rq)
   \item Normal input BAM file path
   \item Tumor input BAM file path
-  \item Path to GC Content Data folder
+  \item Path to GC Content Data folder (The data is included in the package under /data as \lq GCContent.<chromosome>.RData\rq)
 \end{itemize}
 
-Example of "parameters.txt":\\
+Example of \lq parameters.txt\rq:\\
   /home/samreen/VEGAWES\\
   /home/samreen/VEGAWES/Homo\_sapiens\_assembly19.fasta\\
   /home/samreen/tools/GATK/GenomeAnalysisTK.jar\\
