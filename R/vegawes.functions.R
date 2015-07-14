@@ -52,6 +52,8 @@ read.from.gatk <-
   function(gatk.file) {
     gatk.data = read.table(gatk.file, header=TRUE)
     chrpos = matrix(unlist(strsplit(as.character(gatk.data$Target),":")), ncol=2, byrow=TRUE)
+    ind = which(!(grepl("-",gatk.data$Target)))  ## get the targets with inconsistent format (due to size = 1)
+    chrpos[ind,2]  = paste0(chrpos[ind,2], "-", chrpos[ind,2])
     chr = factor(chrpos[,1])
     pos = matrix(as.integer(unlist(strsplit(chrpos[,2],"-"))), ncol=2, byrow=TRUE)
     start = pos[,1]

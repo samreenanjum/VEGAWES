@@ -50,7 +50,7 @@ vegawes <- function(CNVdata, chromosomes,  beta=0.5, alpha = 0.001, min_region_s
     # Save the segmentation for the current chromosome
     
     curr_seg = matrix(0, seg$n_reg, 6);
-    curr_seg[,1] <- as.numeric(as.character(curr_chr));
+    curr_seg[,1] <- as.character(curr_chr);
     curr_seg[,2] <- seg$start[1:seg$n_reg];
     curr_seg[,3] <- seg$end[1:seg$n_reg];
     curr_seg[,4] <- seg$size[1:seg$n_reg];
