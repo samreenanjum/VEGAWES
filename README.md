@@ -66,3 +66,5 @@ The segmentation results for each chromosome are stored in the output directory 
 
 
 Please refer to the VEGAWES.pdf under /inst/doc for further details and descriptions.
+
+Copyright © [2015] QCRI a member of Qatar Foundation. All Rights Reserved;  
