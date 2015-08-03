@@ -10,5 +10,5 @@ Description: This package contains a pipeline to compute copy number
           based segmentaion algorithm, VEGAWES. It reads in paired normal-tumor BAM files, 
           computes average read coverage, removes incorrect reads and GC Content bias, and 
           finally segments the data for copy number classification. 
-          Copyright © [2011] QCRI a member of Qatar Foundation. All Rights Reserved;  
+          Copyright © [2015] QCRI a member of Qatar Foundation. All Rights Reserved;  
 License: GPL-2
