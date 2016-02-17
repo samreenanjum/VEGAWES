@@ -51,7 +51,7 @@ Example of "parameters.txt":
 
 ##### Run the pipeline
 
-To run the pipeline, the user needs to run the `runVEGAWES` function giving atleast two parameters - "parameters.txt" and the list of chromosomes to be analyzed. In addition, Java must be in the current path to run GATK.
+To run the pipeline, the user needs to run the `runVEGAWES` function giving atleast two parameters - "parameters.txt" and the list of chromosomes to be analyzed (Note: Please provide the chromosome numerically as 1, 2, etc, and not with characters like in "chr1"). In addition, Java must be in the current path to run GATK.
 
 This function first runs GATK to compute average read counts from the BAM files, normalizes the counts based on GC Content, computes log-ratio values for each exome, and finally runs VEGAWES segmentation on the required chromosomes. The average read counts and other output files are stored in a new output directory named after the sample-name. 
 
