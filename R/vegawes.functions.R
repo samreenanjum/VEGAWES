@@ -21,11 +21,11 @@ initializeParams <- function(inputfile){
   tumor.inputfile = params.data[7]
   
   ## Create directory for output
-  dir.create(paste(working.folder, "//",sample.name, sep=""), showWarnings=FALSE)
+  dir.create(paste(working.folder, "/",sample.name, sep=""), showWarnings=FALSE)
   
   #filenames of GATK outputfiles
-  normal.outfile = paste(working.folder,"//",sample.name,"//normal-", sample.name, sep="")
-  tumor.outfile = paste(working.folder, "//",sample.name,"//tumor-", sample.name, sep="")
+  normal.outfile = paste(working.folder,"/",sample.name,"/normal-", sample.name, sep="")
+  tumor.outfile = paste(working.folder, "/",sample.name,"/tumor-", sample.name, sep="")
   
   GCContent.folder = params.data[8]
   return ("params" = data.frame(working.folder, reference.file, path.to.GATK, interval.list.file, sample.name, normal.inputfile, tumor.inputfile, normal.outfile, tumor.outfile, GCContent.folder))
