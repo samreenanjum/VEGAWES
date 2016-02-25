@@ -21,7 +21,7 @@ The package and the source code can be downloaded [here](https://github.com/samr
 
 * Paired Tumor-Normal BAM files
 * Exome Interval List (Included in the package under /inst/extdata as "targets.interval\_list" )
-* GC Content Data (Included in the package under /data as "GCContent.\<chromosome\>.RData" )
+* GC Content Data (Included in the package under /data as "GCContent.\<chromosome\>.RData". Please note that this data is generated for the provided exome list. For new exome lists, GC content will have to be regenerated. Script to do so will be added soon.)
 
 In addition, "parameters.txt" must be modified to include all the required paths. See Examples below and VEGAWES.pdf under /inst/doc for further details.
 
@@ -51,7 +51,7 @@ Example of "parameters.txt":
 
 ##### Run the pipeline
 
-To run the pipeline, the user needs to run the `runVEGAWES` function giving atleast two parameters - "parameters.txt" and the list of chromosomes to be analyzed. In addition, Java must be in the current path to run GATK.
+To run the pipeline, the user needs to run the `runVEGAWES` function giving atleast two parameters - "parameters.txt" and the list of chromosomes to be analyzed (Note: Please provide the chromosome numerically as 1, 2, etc, and not with characters like in "chr1"). In addition, Java must be in the current path to run GATK.
 
 This function first runs GATK to compute average read counts from the BAM files, normalizes the counts based on GC Content, computes log-ratio values for each exome, and finally runs VEGAWES segmentation on the required chromosomes. The average read counts and other output files are stored in a new output directory named after the sample-name. 
 
@@ -66,3 +66,5 @@ The segmentation results for each chromosome are stored in the output directory 
 
 
 Please refer to the VEGAWES.pdf under /inst/doc for further details and descriptions.
+
+Copyright © [2015] QCRI a member of Qatar Foundation. All Rights Reserved;  
