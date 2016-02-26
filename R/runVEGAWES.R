@@ -47,7 +47,7 @@ runVEGAWES <- function(inputfile, chr.list = c(1:22), alpha = 0.001, beta = 0.7)
     tumor = tumor_RC[tumor_RC$chr==chr,] 
         
     #####  GC Bias Removal #####
-    load(paste(params$GCContent.folder,"//GCContent.",(chr),".RData", sep=''))
+    load(paste(params$GCContent.folder,"/GCContent.",(chr),".RData", sep=''))
     
     ## Get the required exons
     GCData = GCData[GCData$probe_start %in% normal$probe_start,]
