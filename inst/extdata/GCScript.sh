@@ -7,7 +7,7 @@
 ## Project: VEGAWES
 ## Author: SA
 ##
-## command ---> ./GCScript fastafile targetsfile GCCfolder
+## command ---> ./GCScript.sh fastafile targetsfile GCCfolder
 ################################
 
 ## Set the parameters
