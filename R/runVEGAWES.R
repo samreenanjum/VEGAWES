@@ -77,6 +77,11 @@ runVEGAWES <- function(inputfile, chr.list = c(1:22), alpha = 0.001, beta = 0.7)
     
     ######  Write it to file  ########
     write.table(cnv, file=paste(params$working.folder, "/", params$sample.name, "/Segmentation.", chr,".txt",sep=""), quote=FALSE, sep="\t", row.names=FALSE, )
+    
+    colnames(vegaInput) = c("chr", "probe_start", "probe_end", "logR")
+    write.table(vegaInput, file=paste(params$working.folder, "/", params$sample.name, "/Probes.", chr,".txt",sep=""), quote=FALSE, sep="\t", row.names=FALSE, )
+    
+  
   }  
 }
 
