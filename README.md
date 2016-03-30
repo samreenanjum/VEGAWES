@@ -21,7 +21,7 @@ The package and the source code can be downloaded [here](https://github.com/samr
 
 * Paired Tumor-Normal BAM files
 * Exome Interval List (Included in the package under /inst/extdata as "targets.interval\_list" )
-* GC Content Data (Included in the package under /data as "GCContent.\<chromosome\>.RData". Please note that this data is generated for the provided exome list. For new exome lists, GC content will have to be regenerated. Script to do so will be added soon.)
+* GC Content Data (Included in the package under /data as "GCContent.\<chromosome\>.RData". Please note that this data is generated for the provided exome list. For new exome lists, GC content will have to be regenerated. Script to create these files in .txt format is in /inst/extdata/ - Requires samtools.)
 
 In addition, "parameters.txt" must be modified to include all the required paths. See Examples below and VEGAWES.pdf under /inst/doc for further details.
 
