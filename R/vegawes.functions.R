@@ -80,6 +80,47 @@ calculateCN <- function(logR){
   return(CN)
 }
 
+#############################################################################
+
+
+######################## Plot the segmenation file given the probes and segmentation data ##############
+## opt=0 plots the mean logR for segments, opt=1 plots the CN for the segments [-1=del, 0=normal, 1=amp]
+plotVEGAWES = function(params, segs, probes, chr, plot.opt=0){
+  
+  ## Get the probes and segs for the chromosome
+  probes.chr = probes[which(probes$chr==chr),]
+  segs.chr = segs[which(segs$chr==chr),]
+  
+  min_logr <- min(segs.chr$logR)-0.5;
+  max_logr <- max(segs.chr$logR)+0.5;
+  
+  ## Initialize the plot
+  pdf(paste(params$working.folder, "/", params$sample.name, "/Plot.", chr, ".pdf", sep=""),  width = 11, height =8,  pointsize=16)
+  plot(c(0,max(segs.chr$probe_end)), c(0,0),  type='l',col="black", xlab="Position", ylab="normalized logR", main=paste("VEGAWES - chromosome", chr), ylim=c(min_logr, max_logr))
+  
+  
+  ## plot all the probes (corresponding LR values)
+  points(probes.chr$probe_end,probes$logR,pch="*",col="lightgray")
+  
+  if(plot.opt==0){
+    ## plot all seg mean (LRR) for each probe
+    for (i in 1:nrow(segs)){
+      lines(c(segs.chr$probe_start[i], segs.chr$probe_end[i]),rep(segs.chr$logR[i], 2),lwd=3.5,col="red")
+    }
+  }
+  if(plot.opt==1){
+    ## Del - Blue, Normal = Gold, Amp  = Red
+    CNVcolors = c("blue", "gold", "red")
+    for (i in 1:nrow(segs)){
+      lines(c(segs.chr$probe_start[i], segs.chr$probe_end[i]),rep(segs.chr$copy.number[i]-2, 2),lwd=3.5,col=CNVcolors[segs.chr$copy.number[i]])
+    }
+  }  
+  dev.off()
+  
+}
+
+
+
 
 #####################################################################
 ## Correct the average read coverage values using the GC Content ###
@@ -110,6 +151,8 @@ correct.GCContent<-function(average.coverage,GCContent,step)
   } 
   return(average.coverage.normalized)
 }
+
+#####################################################################
 
 
 

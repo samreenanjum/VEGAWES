@@ -1,19 +1,22 @@
 source("R/vegawes.functions.R")
 
-#################################################################################
-##                                                                             ##
-## Runs the VEGAWES segmentation on WES data                                   ##
-## Assumptions: Java exists in the current path to run GATK                    ##
-##                                                                             ##
-## Input:  inputfile - File containing all required parameters                 ##
-##         chr.list  - Chromosomes on which segmentation is performed          ##
-##         alpha     - Weight given to the distance factor in the segmentation ##
-##         beta      - Argument used for the stop condition definition         ##
-## Output: files containing segmentation information for each chromosome       ##
-##                                                                             ##
-#################################################################################
+##############################################################################################
+##                                                                                          ##
+## Runs the VEGAWES segmentation on WES data                                                ##
+## Assumptions: Java exists in the current path to run GATK                                 ##
+##                                                                                          ##
+## Input:  inputfile - File containing all required parameters                              ##
+##         chr.list  - Chromosomes on which segmentation is performed                       ##
+##         alpha     - Weight given to the distance factor in the segmentation              ##
+##         beta      - Argument used for the stop condition definition                      ##
+##         plot.opt  - Option for the plot function (-1 = no plot,                          ##
+##                                                    0 = default/mean logR for segments,   ##
+##                                                    1 = CN for the segments)              ##
+## Output: files containing segmentation information for each chromosome                    ##
+##                                                                                          ##
+##############################################################################################
 
-runVEGAWES <- function(inputfile, chr.list = c(1:22), alpha = 0.001, beta = 0.7){
+runVEGAWES <- function(inputfile, chr.list = c(1:22), alpha = 0.001, beta = 0.7, plot.opt=0){
   
   params = initializeParams(inputfile)  
   normal.gatk.file = paste(params$normal.outfile, ".sample_interval_summary", sep="")
@@ -69,7 +72,7 @@ runVEGAWES <- function(inputfile, chr.list = c(1:22), alpha = 0.001, beta = 0.7)
     ########  Prepare the data for VEGAWES and run the segmentation ##########
     coverage.cutoff = 5
     covered.exons = (normal$average.coverage > coverage.cutoff) & (tumor$average.coverage > coverage.cutoff)
-    vegaInput = cbind(as.numeric(as.character((normal$chr[covered.exons]))),normal$probe_start[covered.exons], normal$probe_end[covered.exons],logR[covered.exons])  
+    vegaInput = cbind((as.character((normal$chr[covered.exons]))),normal$probe_start[covered.exons], normal$probe_end[covered.exons],logR[covered.exons])  
     segs = vegawes(vegaInput, chromosomes=unique((normal$chr[covered.exons])), alpha = as.double(alpha), beta = as.double(beta))
     
     cnv = data.frame(chr=segs[,1], probe_start=as.numeric(segs[,2]), probe_end=as.numeric(segs[,3]), num.mark=as.numeric(segs[,4]), logR=as.numeric(as.character(segs[,5])))
@@ -79,8 +82,12 @@ runVEGAWES <- function(inputfile, chr.list = c(1:22), alpha = 0.001, beta = 0.7)
     write.table(cnv, file=paste(params$working.folder, "/", params$sample.name, "/Segmentation.", chr,".txt",sep=""), quote=FALSE, sep="\t", row.names=FALSE, )
     
     colnames(vegaInput) = c("chr", "probe_start", "probe_end", "logR")
-    write.table(vegaInput, file=paste(params$working.folder, "/", params$sample.name, "/Probes.", chr,".txt",sep=""), quote=FALSE, sep="\t", row.names=FALSE, )
+    ## Uncomment to save the probes file
+    # write.table(vegaInput, file=paste(params$working.folder, "/", params$sample.name, "/Probes.", chr,".txt",sep=""), quote=FALSE, sep="\t", row.names=FALSE, )
     
+    ##### Plot the segmentation #######
+    if(plot.opt!=-1)
+    plotVEGAWES(params, as.data.frame(cnv), as.data.frame(vegaInput), as.character(chr), plot.opt)
   
   }  
 }
