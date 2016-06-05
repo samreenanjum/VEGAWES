@@ -123,7 +123,7 @@ The function {\ttfamily runVEGAWES} processes and computes the segmentation on t
 
 
 \begin{verbatim}
-runVEGAWES(inputfile, chr.list, alpha=0.001, beta=0.5)
+runVEGAWES(inputfile, chr.list, alpha=0.001, beta=0.5, plot.opt=0)
 \end{verbatim}
 
 
@@ -135,6 +135,8 @@ runVEGAWES(inputfile, chr.list, alpha=0.001, beta=0.5)
  \item[{\ttfamily alpha}:] (default value $0.001$)  This argument is used to define the weight given to the distance between the exons factor. Setting this to 0 will allow the usage of the original VEGA segmenation (see \cite{VEGAWES} for more details).
  
  \item[{\ttfamily beta}:] (default value $0.5$)  This argument is used to define the stop condition of VEGAWES algorithm (see \cite{VEGAWES} for more details).
+ 
+ \item[{\ttfamily plot.opt}:] (default value $0$)  This argument is used to plot the segmentation results. Options: $-1$ = no plot, $0$ = plots the mean values of the segments, and $1$ plots the copy number of the segments.  
   
 \end{description}
 
@@ -157,7 +159,6 @@ This function runs the GATK command with the DepthOfCoverage utility to compute 
 \begin{verbatim}
 runGATK(params)
 \end{verbatim}
-
 \begin{description}
   \item[{\ttfamily params}:] This argument is the output object from {\ttfamily initializeParams} containing the path to the GATK jar, the exon list, the reference genome, the sample name as well the input BAM files. 
 \end{description}
@@ -180,6 +181,21 @@ calculateCN(logR)
  \item[{\ttfamily logR}:] This argument is vector containing all the logR values computed by the segmentation algorithm
 \end{description}
 
+
+\subsection{{\ttfamily plotVEGAWES}}
+This function plots the segmentation results along the given chromosome.
+\begin{verbatim}
+plotVEGAWES(params, cnv, probes, chr, plot.opt)
+\end{verbatim}
+\begin{description}
+ \item[{\ttfamily params}:] This argument is the output object from {\ttfamily initializeParams} containing the path to the GATK jar, the exon list, the reference genome, the sample name as well the input BAM files
+ \item[{\ttfamily cnv}:] This argument is segmentation result obtained from {\ttfamily vegawes} (contains chr, probe\_start, probe\_end, num.mark, mean logR, copy.number) or the data saved in the segmentation .txt files (output of {\ttfamily runVEGAWES} )
+ \item[{\ttfamily probes}:] This argument contains the list of probes given as input to {\ttfamily vegawes} (contains chr, probe\_start, probe\_end, logR)
+ \item[{\ttfamily chr}:] This argument is the required chromosome
+ \item[{\ttfamily plot.opt}:] This argument provides the options for the type of plot, default is $0$. The given options are $-1$ for no plot, $0$ for plotting the logR mean values of the segments on the chromosome, and $1$ plots the copy number values for each segment on the given chromosome
+\end{description}
+
+
 \subsection{{\ttfamily correct.GCContent}}
 This function adjusts the average read coverage values based on the GC Content. The approach is based on the median normalization approach described in \cite{Yoon2009}.
 \begin{verbatim}
@@ -195,7 +211,7 @@ correct.GCContent(average.coverage,GCContent,step)
 
 \begin{thebibliography}{}
 
-\bibitem{VEGAWES} Anjum S. {\it et~al}. (2015).VEGAWES: Variational segmentation on Whole Exome Sequencing, \textit{Submitted}.
+\bibitem{VEGAWES} Anjum S. {\it et~al}. (2015).VEGAWES: Variational segmentation on Whole Exome Sequencing, \textit{BMC Bioinformatics}.
 
 \bibitem{Morganella2010} Morganella S. {\it et~al}. (2010).VEGA: Variational segmentation for copy number detection, \textit{Bioinformatics}.
 
